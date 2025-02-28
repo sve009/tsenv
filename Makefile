@@ -8,7 +8,11 @@ setup: build
 	cd $(project)
 
 run:
-	docker run -d -v .:/project -p 8080:8080 --name tsenv tsenv
+	docker run -d -v .:/project -p 8080:8080 --rm --name tsenv tsenv
 
 shell:
-	docker run -v .:/project -p 8080:8080 -it tsenv bash
+	docker run -v .:/project -p 8080:8080 --rm -it tsenv bash
+
+.PHONY: clean
+clean:
+	docker image rm -f tsenv
