@@ -7,7 +7,7 @@ setup: build
 	cp ./Makefile $(project)
 
 run:
-	docker run -d -v .:/project -p 8080:8080 --rm --name tsenv tsenv
+	docker run -v .:/project -p 8080:8080 --rm --name tsenv tsenv
 
 shell:
 	docker run -v .:/project -p 8080:8080 --rm -it tsenv bash
