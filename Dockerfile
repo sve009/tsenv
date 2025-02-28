@@ -1,11 +1,17 @@
-FROM node:latest
+FROM debian:latest
 
 WORKDIR /project
-VOLUME /project
 
-RUN npm init -y &&
-    npm i webpack webpack-cli webpack-dev-server typescript ts-loader --save-dev
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y nodejs \
+    npm
 
 RUN npm install
 
-RUN npx webpack serve
+VOLUME /project
+
+CMD npm i webpack \
+           webpack-cli webpack-dev-server \
+           typescript ts-loader \
+           --save-dev && \
+    npx webpack serve
