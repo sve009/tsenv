@@ -5,7 +5,6 @@ build:
 setup: build
 	cp ./Dockerfile $(project)
 	cp ./Makefile $(project)
-	cd $(project)
 
 run:
 	docker run -d -v .:/project -p 8080:8080 --rm --name tsenv tsenv
