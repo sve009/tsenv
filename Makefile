@@ -1,6 +1,8 @@
 build:
-	rm -rf .git
 	docker build . -t tsenv
+
+setup: build
+	cp ./Makefile $(project)
 
 run:
 	docker run -v .:/project -p 8080:8080 tsenv
